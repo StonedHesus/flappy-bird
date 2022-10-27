@@ -13,13 +13,8 @@ local GRAVITY = 20 -- The value of the gravitational pull.
 local ANTI_GRAVITY = -5 -- The value of the bird's opposing force.
 
 --[[
-    @param image; a love.graphics image object.
-    @param width; the width of the sprite.
-    @param height; the height of the sprite.
-    @param x; the x coordinate of the top left corner.
-    @param y; the y coordinate of the top left corner.
-    @param deltaY; the velocity of the game object on the Y-axis.
-
+    @param screenWidth {integer} -  the width of the sprite.
+    
     This is the sole constructor provided for the class.
 
     Its role is simply to initialise the attributes which are going to be present in the object's table 
@@ -32,13 +27,13 @@ local ANTI_GRAVITY = -5 -- The value of the bird's opposing force.
 
     @author Andrei-Paul Ionescu.
 ]]
-function Bird:init(width)
+function Bird:init(screenWidth)
     self.image  = love.graphics.newImage('resources/sprites/bird.png')
     self.width  = self.image:getWidth()
     self.height = self.image:getHeight()
-
-    self.x = width / 2 - (self.width - 2)
-    self.y = width / 2 - (self.height - 2)
+    
+    self.x = screenWidth / 2 - (self.width - 2)
+    self.y = screenWidth / 2 - (self.height - 2)
 
     self.deltaY = 0
 end

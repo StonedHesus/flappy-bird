@@ -70,11 +70,10 @@ function love.load()
         resizable = true
     })
 
-
-    -- Initialise the required game components, and pass to them the default values for their properties, if required.
+    --Initialise the required game components, and pass to them the default values for their properties, if required.
     bird = Bird:init(push:getWidth())
 
-     -- Set the title of the view to equal to the contents of the VIEW_TITLE global constant.
+    -- Set the title of the view to equal to the contents of the VIEW_TITLE global constant.
     love.window.setTitle(DEFAULT_VIEW_TITLE)
 end
 
@@ -115,6 +114,8 @@ function love.draw()
 
     -- Draw the bird game object to the screen at its current location.
     bird:draw()
+
+    love.graphics.draw(love.graphics.newImage('resources/sprites/bird.png'), push:getWidth() / 2, push:getHeight() / 2)
     
     -- Conclude the rendering process.
     push:finish()
