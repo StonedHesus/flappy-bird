@@ -14,6 +14,14 @@ local GAP_HEIGHT = 90
     @author Andrei-Paul Ionescu.
 ]]
 function PipePair:init(xCoordinate, yCoordinate)
+    
+    self.x = xCoordinate + 32
+    self.y = yCoordinate
+    self.pipes = {
+        ['upper'] = Pipe(true, xCoordinate, yCoordinate),
+        ['lower'] = Pipe(false, xCoordinate, yCoordinate)
+    }
+    self.remove = false
 end
 
 --[[
@@ -28,4 +36,7 @@ end
     @author Andrei-Paul Ionescu.
 ]]
 function PipePair:draw()
+    for position, pipe in pairs(self.pipes) do
+        pipe:draw()
+    end
 end
