@@ -13,6 +13,7 @@ Class = require './lib/class' -- This library will allow us to interact with cla
 
 -- Import the required classes.
 require 'src/components/Bird'
+require 'src/components/PipePair'
 
 -- We define four global constants, whose scope is limited to the current file, which indicate the dimensions 
 -- for the screen, both the default ones and the virtual ones, that we will require to pass to the push 
@@ -46,6 +47,9 @@ local groundScroll = 0
 -- Define the looping point for the parallax animation.
 local backgroundLoopingPoint = 413
 
+-- Define a global flag which indicates whether we ought to keep scrolling or not.
+local scrolling = true
+
 --[[
     Describe the behaviour which the program, chiefly the view, ought to have when the application is
     launched.
@@ -71,7 +75,7 @@ function love.load()
     })
 
     --Initialise the required game components, and pass to them the default values for their properties, if required.
-    bird = Bird:init(push:getWidth())
+    bird = Bird(push:getWidth())
 
     -- Set the title of the view to equal to the contents of the VIEW_TITLE global constant.
     love.window.setTitle(DEFAULT_VIEW_TITLE)
@@ -115,8 +119,6 @@ function love.draw()
     -- Draw the bird game object to the screen at its current location.
     bird:draw()
 
-    love.graphics.draw(love.graphics.newImage('resources/sprites/bird.png'), push:getWidth() / 2, push:getHeight() / 2)
-    
     -- Conclude the rendering process.
     push:finish()
 end
